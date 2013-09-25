@@ -5,6 +5,10 @@ def removeN(dna):
     return dna
 
 def CG_ratio(dna):
+    '''Return the proportion of the sequence that is C or G
+    >>> CG_ratio('AACCGGTT')
+    0.5
+    '''
     dna=removeN(dna)
     return (dna.count('C') + dna.count('G')) / float(len(dna)), len(dna)
 
