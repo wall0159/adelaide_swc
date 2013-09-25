@@ -1,0 +1,75 @@
+file_handle = open('example.fasta', 'r')
+file_handle.read(3)
+
+os.getcwd() 
+
+file_write = open('example_write.fasta', 'w')
+file_write.close()
+
+import this
+
+a=range(1,100,5)
+[x+y for x,y in zip(a,a)]
+
+dir('apple') # give a list of all the methods for the string
+combined_str = ','.join(['one','two','three'])
+combined_str.split(',')
+help('apple'.join)
+combined_str.replace('r','R')
+
+my_list = [1,2,3]
+my_list.append(4)
+my_list.append(4)
+my_list.append(4)
+my_list.remove(4) # remove the first 4
+my_list.reverse()
+
+','.join('apple') # treats the string like a list
+
+my_set = set([1,2,3,4,4,4,5,6,7, 'a'])
+5 in my_set
+set('apples and bananas') # list of unique characters, treat string as list
+
+my_dict = {'a': 1, 'c': 3, 'b': 2}
+my_dict['b']
+'a' in my_dict
+del my_dict['a']
+
+# flow control
+reader = open('fruits.txt', 'r')
+line = reader.readline()
+while line != '':
+    if line[0] in set(['A', 'E', 'I', 'O', 'U']):
+        print 'I am an', line
+    else:
+        print 'I am a', line
+    line = reader.readline()
+
+# functions
+def sum_two_numbers(first_number, second_number):
+    result = first_number + second_number
+    return result
+
+import filename_of_functions
+filename_of_functions.function() # how to call one of the functions
+
+# classes
+import rodent
+x = rodent.Rodent('A1234', 6)
+x.is_large()
+
+### testing
+# make sure that the tests don't have lots of repeated code -- use lists of lists and loops
+test=[['a','a','True'],['ctg','t','False']]
+import py_functions
+for (i, (seq,prefix, expected)) in enumerate(test):
+    print i
+py_functions.dna_starts_with(
+
+nosetests -- python testing program (not part of python -- needs separate installation)
+
+None -- python's NULL
+
+Testing Exceptions
+try/except
+

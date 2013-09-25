@@ -1,0 +1,14 @@
+reader = open('csv/Pitching.csv', 'r')
+line = reader.readline()
+# work out which field number we want
+field_num=line.split(',').index('IPouts')
+
+line = reader.readline()
+IPouts_total=0
+line_count=0
+while line != '':
+    IPouts_total += float(line.split(',')[field_num])
+    line_count += 1
+    line = reader.readline()
+
+print 'mean IPouts = ' + str(IPouts_total / float(line_count))

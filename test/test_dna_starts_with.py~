@@ -1,0 +1,46 @@
+import py_functions
+
+# this is run using nosetests, viz.
+# >pwd
+#   $CODEDIR
+# >nosetests ./test/
+def test_same_string_passed_to_both():
+    dna = 'ACTG'
+    assert py_functions.dna_starts_with(dna,dna)
+    
+def test_match_first_character():
+    dna = 'ACTG'
+    assert py_functions.dna_starts_with(dna,'A')
+    
+def test_match_first_wrong_case():
+    dna = 'ACTG'
+    assert py_functions.dna_starts_with(dna,'a')
+    
+def test_match_string_longer_than_dna():
+    dna = 'ACTG'
+    string = 'ACTGT'
+    assert not py_functions.dna_starts_with(dna,string)   
+    
+def test_clean_whitespace_from_DNA():
+    dna = ' ACTG '
+    assert py_functions.dna_starts_with(dna,'ACTG')   
+    
+def test_clean_whitespace_from_string():
+    dna = ' ACTG '
+    assert py_functions.dna_starts_with(dna,'   ACTG') 
+    
+def test_DNA_wrong_type():
+    dna = list(' ACTG ')
+    assert py_functions.dna_starts_with(dna,'ACTG')    
+    
+def test_string_wrong_type():
+    dna    = list(' ACTG ')
+    string = list(' ACTG ')
+    assert py_functions.dna_starts_with(dna,string)
+
+def test_arbitrary_strings():
+    dna    = list('It was the best of times, it was the worst of times')
+    string = list('It was the best of times, ')
+    assert py_functions.dna_starts_with(dna,string)     
+    
+
