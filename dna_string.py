@@ -12,6 +12,7 @@ class DNAString(object):
         self.gc_content = py_functions.CG_ratio(self.seq)[0]
     
     def base_count(self, base):
+        # return the number of instances of a base in the sequence
         return self.seq.count(base)
     
     def reverse_complement(self):
