@@ -1,3 +1,4 @@
+#Useful notes
 file_handle = open('example.fasta', 'r')
 file_handle.read(3)
 
