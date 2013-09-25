@@ -1,0 +1,815 @@
+Welcome to MoPad!
+
+This pad text is synchronized as you type, so that everyone viewing this page sees the same text.  This allows you to collaborate seamlessly on documents!
+
+Day 1
+
+9:00-10:30 Python basics
+
+1. The Zen of Python, by Tim Peters
+>>>import this
+
+2. Convoluted counterpart of good old 'pwd' 
+>>>import os
+>>>os.getcwd()
+'/home/swc_trainee/Desktop/scripts'
+
+3. To extend range() to floats you can use list comprehension:
+>>>>>> [x + 0.5 for x in range(0, 10)]
+[0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5]
+
+
+(10:30-11:00 break)
+11:00-12:30 Python data structures
+
+
+
+(12:30-1:00 lunch)
+1:00-2:00 Python control flow
+2:00-3:00 Python functions and modules
+(3:00-3:30 break) 
+3:30-4:30 classes and objects
+
+
+Day 2
+
+9:00-10:30 testing
+(10:30-11:00 break)
+11:00-12:30 testing
+(12:30-1:00 lunch)
+1:00-3:00 version control
+(3:00-3:30 break)
+3:30-4:30 documentation
+
+ 
+Python cheatsheet:
+ # How to comment:
+# One line comment is with "#"
+# Multi-line comments start and end with """ or '''
+
+# How to define variables
+# string
+dog_dragon = "falcon" # double-quote or single-quote, doesn't matter
+# integer
+number_of_seasons = 4
+#be careful!
+number_of_seasons / 5
+# python returns 0!
+# instead:
+number_of_seasons / float(5)
+#= 0.8. That's better.
+# float
+half = 0.5
+# boolean
+is_world_ending = False
+
+
+# How to get help
+help(str)
+
+# How to get the type of a variable
+type(dog_dragon)
+>>> 'str'
+
+# How to print
+print "hello world"
+# or
+print("hello world")
+
+# get your current working directory
+import os
+os.getcwd()
+
+# How to create list containing artithmetic progression from 0-9
+range(10)
+# How to generate the list from 1-9
+range(1,10)
+# how to change the step size of the progression from 1 to 5
+range(1,10,5)
+
+# How to define a function
+def a_name(first_argument, second_argument, argument_with_default = 5):
+    """ This is a simple function, and here is a simple description.
+    Remember to always indent! 
+    """
+    print first_argument, second_argument, argument_with_default
+    x = 4
+    return x
+
+# How to define a class
+class Person:
+    # The initialization method
+    def __init__(self, person_name):
+        self.name = person_name
+    # An example method
+    def introduce(self):
+        return "Hello, my name is " + self.name
+
+# How to open a file for reading
+fh = open("hello.txt", "r")
+# Identical
+fh = open("hello.txt")
+# How to read a line from a file
+fh.readline()
+# How to read three characters from a file
+fh.read(3)
+# How to write to a file
+write_file = open("example.txt", "w")
+# How to write to that file
+write_file.write("Hello, I'm a line\n")
+
+# How to import a module
+import Bio
+# How to import a method from a module
+from Bio import SeqIO
+
+# Some important modules for bioinformaticians:
+#biopython for all kinds of sequence manipulations, phylogenetic trees, FASTQ/FASTA parsing etc.
+#matplotlib for plotting graphs
+#numpy for matrix manipulations
+#pysam for reading and writing SAM and BAM-files
+#scipy for all kinds of statistics
+
+
+#Start python
+python
+#quit the python console
+quit()
+#Run python script
+python example.py
+
+
+Try defining a string, an integer, a float
+For extra fun, try adding each type together. Add an integer to a string, a float to an integer, a float to a string. See what happens.
+
+Hint: try converting your numeric types to strings to get the concatenations to work
+Convert-methods: str(), float(), int()
+
+# use dir() on an object to peek inside that object to see what methods are available
+dir('string')
+
+
+# indices in Python are zero-based
+my_list = [1,2,3,4,5,4]
+# the first element in the list
+my_list[0]
+# the last element in the list
+my_list[-1]
+
+...
+import antigravity
+import this
+from __future_ import braces
+
+    
+
+Exercise 1
+
+Write a Python script that takes a list of three
+or more words as arguments and prints those words
+separated by commas and sorted alphabetically, with
+the final word preceded by "and", with a period at
+the end.
+
+1. get the list of arguments
+2. sort them
+3. join all of the words except the last one with a comma
+[4. capitalize the first letter]
+5. append the word "and" and the final word, and a period
+6. print the result
+
+Extra credit: capitalize the first letter.
+
+For example:
+
+python my_script.py apple strawberry banana
+apple, banana, and strawberry.
+
+Sample solution:
+import sys
+#   1. get the list of arguments
+#   2. sort them
+    sorted_list = sorted(sys.argv[1:])
+#   [4. capitalize the first letter]    
+    sorted_list[0] =(sorted_list[0].capitalize())
+
+#3. join all of the words except the last one with a comma
+#5. append the word "and" and the final word, and a period
+#6. print the result
+    print ', '.join(sorted_list[:-1]) + ' and ' + sorted_list[-1] + '.'
+
+
+You can use the  Ctrl + Alt + K  key combination to enable/disable the catching of Alt+Tab and Print Screen keys within the NX session. <- brilliant to know for future setups!
+
+
+
+# SETS
+
+# list set functions
+dir(set)
+
+Exercise 2
+
+given a string (a sentence), find out how many
+unique letters A-Z it contains - capital and
+lower case shouldn't be double-counted
+
+'AaAa'
+
+input: some string
+
+input_string = 'some string here'
+...
+print (the number of unique letters in the string)
+
+
+Exercise 2 Solution
+
+input_string = input_string.lower()
+
+letters = set(input_string)
+letters.remove(',')
+length = len(set(input_string))
+print letters
+print length
+
+Alternate, slightly advanced solution:
+def count_unique(sentence):
+    #create a string containing all the non-alpha numeric characters in the latin-alphabet
+    delchars = ''.join(c for c in map(chr, range(256)) if not c.isalnum())
+    #use .upper() to ensure we don't double count
+    #use string.translate() to remove the non alpha-numeric characters that we looked up before: http://docs.python.org/2/library/string.html#string.translate
+    sentence = set(sentence.upper().translate(None, delchars))
+    print sentence
+    return len(sentence)
+
+extra credit:
+
+given two sentences, find the # of letters they have in common, and
+the number of letters that are unique to each
+
+
+e.g.:
+
+string1 = 'AAAAaaaa'
+string2 = 'AAAAaaaaBBBB
+
+string1 = string1.lower()
+string2 = string3.lower()
+
+
+
+set1 = set(string1)
+set2 = set(string2)
+
+
+
+print (# of letters in common)
+print (# of letters unique to sentence 1)
+print (# of letters unique to sentence 2)
+
+
+
+# dictionaries
+
+my_dict = {'a' : 1, 'b' :2, 'c' :3}
+
+# 'a' key
+# 1 value
+
+
+my_dict['a'] = 4
+
+my_dict.keys()
+
+my_dict['a']
+
+
+
+Exercise 3
+
+  
+
+create a dictionary in the following format:
+{'G': (# of occurences in the string),
+'A': ...
+}
+
+print the dictionary
+
+hint: strings have a "count" method - see the help function to find out how to use it
+
+
+extra credit: print the GC content (the proportion of the string that is either G's or C's, from 0 to 1)
+
+
+Exercise 3 Solution
+
+help(str.count)
+
+input_string = "GATCAGTCGATCGACTGCTAGCTAGCTAGTACGGCGTATA"
+countA = input_string.count('A')
+countC = input_string.count('C')
+countT = input_string.count('T')
+countG = input_string.count('G')
+
+dna_dict = {'A' : countA, 'G' : countG, 'C' : countC, 'T' : countT}
+
+dna_dict['A']
+
+# GC content
+print float(dna_dict['G'] + dna_dict['C']) / len(input_string)
+
+Control Flow:
+
+Selection:
+
+number = int(sys.argv[1])
+
+if number % 2 ==0:
+    print 'EVEN'
+elif
+    print 'ODD'
+ 
+python checkoddeven.py 3
+
+For Loop:
+
+fruits = ['apple', 'orange', 'peach']
+
+for fruit in fruits:
+    print "I am a " + fruit + "."
+    
+ # print fruit, len(fruit)
+    
+    
+#Exercise:  For each item in fruits, print the content of the item and the length of the item
+    
+
+# print fruit, len(fruit)
+
+
+While Loop:
+
+Exercise 1
+
+# print fruit, len(fruit)
+
+reader = open('fruits.txt', 'r')
+line = reader.readline()
+
+while line != ' ':
+ print line
+line.reader.readline()
+
+Exercise 2
+
+wget -U firefox http://www.gutenberg.org/cache/epub/76/pg76.txt
+1) Read the contents of the file pg76.txt
+2) get the length of each line and sum the lines as you go
+3) count the total number of lines in the file
+
+
+reader = open('pg76.txt', 'r')
+line = reader.readline()
+
+total_length = 0
+line_count = 0
+
+while line != ' ':
+ total_length = len(line)
+ sum = sum + length
+ line.reader.readline()
+
+print length
+
+Exercise 3
+
+wget http://seanlahman.com/files/database/lahman2012-csv.zip
+unzip lahman2012-csv.zip
+Pitching.csv
+
+# Open our input file.
+reader = open('Pitching.csv', 'r')
+
+# Read the header line.
+line = reader.readline()
+
+# Get the index of the 'IPouts' colum.
+header = line.split(',')
+ipout_index = header.index('IPouts')
+
+# Go to the first data line.
+line = reader.readline()
+
+# Define our variables.
+total_outs = 0
+line_count = 0
+
+# Read the rest of the data line by line.
+while line != '':
+     row = line.split(',')
+     value = row[ipout_index]
+     total_outs += float(value)
+     line_count += 1
+     line = reader.readline()
+
+# Print our results
+average = total_outs / line_count
+print 'Total Outs: ' + str(total_outs)
+print 'Line Count: ' + str(line_count)
+print 'Average: ' + str(average)
+
+#The alternate method of finding the index of a string in a string or list is the index() method:
+string = 'Hi, my name is bob, and I am great!'
+string.index('bob') # 15
+string.split().index('bob,') # 4
+
+Thanks for this { .index() } -- that's nice
+
+#So then we can loop through the file using either a while or a for loop:
+ind = -1
+sum = 0
+count = 0
+for each_line in open('Pitcher.csv','r'): # for-loops to loop through files in python are lovely
+    if ind == -1:
+        ind = each_line.split().index('IPouts')
+        continue
+    sum += eachline.split()[ind] #sums all the ipouts
+    count += 1
+    print eachline.split()[ind] #prints all the IPouts
+print sum/float(count) #prints the average IPout
+
+The Python preferred style guide is called PEP 8: http://www.python.org/dev/peps/pep-0008/
+
+#The python iterator interface
+#It's worth noting that any object or type in python that implements the iterator interface can be looped through using the 
+for x in iterator:
+    x.do_stuff()
+syntax. Examples include text files, lists, dictionaries, sets and strings. 
+
+for x in 'qwertyuiop':
+...     print x
+... 
+q
+w
+e
+r
+t
+y
+u
+i
+o
+p
+
+Functions and modules:
+
+Exercise 1:
+#Exercise 1:
+
+#given a string 'dna', remove all 'N', return the GC-content
+
+
+dna  = 'ATGCNNNNNNNN'
+dna2 = 'NGGGGGGGGGGGC'
+dna3 = 'GTGTGTGTGTGTTT'
+Exercise 2:
+
+# exercise 2:
+
+Given a string 'filename', write a function which opens that file, iterates over all sequences, and writes a bit of stats about each sequence:
+
+- print the name of each sequence
+- Count of Ns
+- GC-content without Ns
+
+Print amount of sequences in that file.
+
+Tips: 
+-  if line.startswith('>') - give the name
+
+>Sequence 1
+ATGGGGGTGTGTGNNNNNNTGA
+>Sequence 2
+ATGCCCGCGCGCGCTGA
+>Sequence 3
+GGGTGGTGTGTGACAAAAAAAA
+
+Example-output:
+
+The sequence has name 'Sequence 1'
+It has 6 Ns, 0.5625 GC-content
+The sequence has name 'Sequence 2'
+It has 0 Ns, 0.7647058823529411  GC-content
+The sequence has name 'Sequence 3'
+It has 0 Ns, 0.4090909090909091 GC-content
+
+There are three sequences in the file.
+
+def give_stats(filename):
+    # do stuff
+    
+give_stats('example.fasta')
+
+Solution:
+
+def give_dna_stats(filename):
+  fh = open(filename, 'r')
+  line = fh.readline()
+  sequence_counter = 0
+  while line != '':
+    line = line.rstrip()
+    if line.startswith('>'):
+      print 'The name of the sequence is ' + line
+    else:
+      line = line.upper()
+      gc_count = float(line.count('G') + line.count('C'))/len(line.replace('N', ''))
+      n_count = line.count('N')
+      print 'GC-content is ' +  str(gc_count)
+      print 'There are ' + str(n_count)  + ' Ns.'
+      sequence_counter += 1
+    line = fh.readline()
+  print 'There are ' + str(sequence_counter) + ' sequences in the file.'
+  
+give_dna_stats('example.fasta')
+
+Note: the 'pass' keyword means to do nothing. Why do we have it? Because the python interpreter needs to know where to check for indenting:
+def my_function():
+    #not implemented yet
+    
+def my_second_function():
+    do_stuff()
+    
+Will raise a syntax error - the interpreter needs to see some code in the first function.
+So we add pass:
+
+def my_function():
+    #not implemented
+    pass
+
+#New-style python classes inherit from object. You don't need to know what that means necessarily, but add (object) after your class declaration as below.  #http://docs.python.org/2/reference/datamodel.html#newstyle if you're curious. It's not important for most applications, but it can be a bit of a 'gotcha'.
+    
+class Rodent(object):
+    def __init__(self, tag_id, size ):
+        self.tag_id = tag_id
+        self.size = size
+        self.sightings_per_month = {}
+    
+    def is_large(self):
+        # return True if size is > 5oz
+        return (self.size > 5)
+    
+    def is_small(self):
+        # return True if size is < 3oz
+        return (self.size < 3)
+    
+    def plot(self):
+        # return the letter of the plot at which
+        # this rodent was first captured
+        return self.tag_id[0]
+        
+    
+    def capture(self, month):
+        # we captured this rodent once in this month
+        if month not in self.sightings_per_month:
+            self.sightings_per_month[month] = 0
+        self.sightings_per_month[month] += 1
+
+
+# dna_string.py
+    def __init__(self, sequence):
+        self.seq = sequence
+
+    def base_count(self, base)
+        return self.sequence.count(base)
+
+    def gc_content(self):
+        g = self.base_count('G')
+        c = self.base_count('C')
+        return float(g+c)/len(self.sequence)
+
+
+import dna_string
+
+x = dna_string.DNAString('GATC')
+x.reverse_complement
+
+
+
+
+class NucleotideString:
+    base_complement = {'G': 'C', 'C':'G',
+                       'A': 'T', 'T': 'A'}
+    
+    def __init__(self, sequence):
+        self.sequence = sequence
+        self.bases = {}
+    
+    def base_count(self, base):
+        if base in self.bases:
+            return self.bases[base]
+        else:
+            self.bases[base] = self.sequence.count(base)
+            return self.bases[base]
+
+    def gc_content(self):
+        g = self.base_count('G')
+        c = self.base_count('C')
+        return float(g+c)/len(self.sequence)
+
+    def reverse_complement(self):
+        complement = ''        
+        for base in self.sequence:
+            complement = self.base_complement[base] + complement
+        
+        return complement
+
+
+class DNAString(NucleotideString):
+    pass
+
+
+class RNAString(NucleotideString):
+    base_complement = {'G': 'C', 'C':'G',
+                       'A': 'U', 'U': 'A'}
+
+
+
+http://software-carpentry.org/blog/2013/09/how-much-testing-is-enough.html
+
+
+def nucleotideContent(dnaString):    
+'''This function must return the contribution    
+of nucleotides ATCG (as uppercase) from a given DNA     
+string inside a dictionary, where each key refers to    
+a nucleotide    
+'''    
+dnaDict = {}    
+uniques=set(dnaString.upper())
+uniques=uniques.intersection(set('ACTG'))    
+for nucleotide in uniques:    
+dnaDict[nucleotide]=dnaString.count(nucleotide)    
+    
+return dnaDict
+
+# Run and report    
+passes = 0    
+for (i, (seq, expected)) in enumerate(Tests):    
+  if nucleotideContent(seq) == expected:    
+    passes += 1    
+else:    
+  print('test %d failed' % i)    
+    
+print('%d/%d tests passed' % (passes, len(Tests)))
+
+test = [
+    ['gtcagtc', {'G':2, 'T':2, 'C':2, 'A':2}],
+    ['gtagt', {'G':2, 'T':2, 'A':2}],
+    ['GTCNGAT', {'G': 2, 'T':2, 'C':1,'A':1}']
+]
+
+On importing:
+Yesterday we covered the import keyword very briefly. Some import tricks:
+import x
+Will import the module x (x.py) into your file. To access any of the functions and classes of x you will need to refer to them in the x namespace like so:
+x.y()
+x.z()
+However, there is another way of importing that we covered, the from keyword:
+from x import y
+This will only import y into your namespace. So:
+y()
+Will work, but
+z()
+x.z()
+Will not. There is one final way of importing code from other modules:
+from x import *
+This will import everything from the x module, so
+y()
+z()
+Will both work. Use this with care - more than one programmer has been burned by importing too much, and having similarly named functions/classes/methods to the ones they define.
+
+
+
+
+#creating my test_dna_starts.py file
+def dna_starts_with(st1, st2):
+    return st1[0:len(st2)]==st2
+    
+def test_dna_starts_with_itself():
+    dna='acgtgtcgat'
+    assert dna_starts_with(dna, dna)
+    
+def test_dna_starts_with_one():
+    assert dna_starts_with('cgtgc', 'c')
+    
+def test_dna_starts_with_bigger():
+   dna='acgtgtcgat'
+    assert not dna_starts_with(dna, dna+dna)
+    
+test_dna_starts_with_itself()    
+test_dna_starts_with_one()
+test_dna_starts_with_bigger()
+
+#end of file
+
+on the command line (NOT ON THE PYTHON INTERPRETER), type: nosetests
+
+#more about nose
+http://nose.readthedocs.org/en/latest/usage.html
+# for more advanced testers, you might want to look at running nosetests like this:
+nosetests --with-coverage --cover-tests --cover-html
+# what this does is run the tests and produces a HTML report (./cover/index.html) of what bits of code were covered by your tests. For more info see: http://nose.readthedocs.org/en/latest/plugins/cover.html
+# This is really useful to identify and design tests to cover portions of your code which are not yet covered by existing tests
+
+
+
+Another simple way to check whether a number is an integer:
+
+number = 5
+type(number) == int       # returns True
+type(number) == float    # returns False
+
+
+
+In nose, if you expect a function to fail (you give it invalid input, for example) you can test whether you get the exception you expected:
+
+from nose.tools import assert_raises
+assert_raises(ValueError)
+
+
+
+
+def factorial(n):
+    '''Return the factorial of n, an integer >= 0
+    
+    >>> factorial(4)
+    24
+    '''
+    import math
+    if not n >= 0:
+        raise ValueError('n must be >= 0')
+    
+    if math.floor(n) != n:
+        raise ValueError('n must be integer')
+    
+    result = 1
+    factor = 2
+    while factor <= n:
+        result *= factor
+        factor +=  1
+        
+        
+    return result
+
+if __name__ == '__main__':
+    # when importing this file, the doctests aren't run
+    # but when you run the file with python, the doctests are run
+    import doctest
+    doctest.testmod()
+
+
+
+#User-friendly unit testing in R:
+http://www.johnmyleswhite.com/notebook/2010/08/17/unit-testing-in-r-the-bare-minimum/
+
+
+
+HARDCORE MODE:
+So, out of this workshop, you've decided that you really like Python. Of course you have, it's great. But you spend a lot of time doing HARDCORE calculations with huge amounts of data, far beyond that sissy netbook that Nathan carries around. Here's some things to keep in mind:
+Parallelisation
+Parallelising code is tricky at the best of times, and the way to do it in Python is using the 
+multiprocessing module. http://docs.python.org/2/library/multiprocessing.html is the place to find information about that. If you're doing something that you expect will need parallelisation, you should read the docs first. There are some things that you should keep in mind at the design phase, so do your homework.
+Speed and Memory Use
+Python is pretty good for casual usage, and premature optimisation is the doom of all programmers. However, the time will come when you need to speed things up, or reduce that dictionary using all 128GB of your memory. You can write superfast C extensions to python, but for most of your huge bioinformatic data needs, I think NumPy and SciPy will be great. Go look them up. 
+Super Hardcore Mode
+So most python users use CPython, the reference interpreter of Python. BUT other versions exist, and they are often faster. Check out PyPy, Cython and Jython! Be warned, these things tend to be somewhat enthusiast, and I don't label them Super Hardcore for no reason.
+
+
+More Info
+There was a really great talk on using Python in scientific computing at Pycon-AU 2013 in Hobart. Luckily for you, they recorded it for the benefit of all those without time machines:
+https://www.youtube.com/watch?v=hqOsfS3dP9w&list=PLs4CJRBY5F1KDIN6pv6daYWN_RnFOYvt0&index=18
+It's even in tutorial format, so great for learning!
+
+
+# You only need to perform git configuration once on each computer from which you are using git
+# These will be used to attribute your commits to you and to display nice readable names associated with those commits
+git config --global user.name bendmorris
+git config --global user.email ben@bendmorris.com
+git init # initialize a new repository i.e. the current working directory will become a repository. If you are outside that directory and run a git  command, you will get an error
+git add *.py # adds all files with extension .py into stage
+git add . # add everything (use with care!!) into stage
+git add dir # add directory "dir" and all its contents
+git add -u # stage only files that have been updated and are already being tracked
+git status # Check current status, which files are new, which ones aren't yet committed
+git commit -m "adding the python files that we created up till now in Adelaide workshop" # moves all files from staging to the commit
+# "git commit" without the "-m" will open your default text editor. This may be nano, vi, vim, gedit
+git log # see all commits with commit messages, dates etc. (use 'q' to exit)
+git diff # When run in the top level directory of the repo will show you a diff between your working directory and the local whole repository
+
+
+Git exercise 1
+
+Create a README file, and commit it to your local repository
+
+Extra credit: export the Etherpad, and commit that too
+
