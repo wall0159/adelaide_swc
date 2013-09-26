@@ -1,0 +1,9 @@
+import dna_string
+x = dna_string.DNAString('AAGGttcc')
+y = dna_string.DNAString('AAGGttccnnn')
+x.print_all()
+
+
+samples = {'tiller': x, 'seed': y}
+print samples
+samples['tiller'].print_all()

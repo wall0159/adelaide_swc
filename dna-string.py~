@@ -1,0 +1,13 @@
+import py_functions
+
+class DNAString:
+    def __init__(self, seq):
+        self.seq=seq
+        
+    def gc_content(self):
+        self.gc_content = CG_ratio(self.seq)
+    
+    def base_count(base):
+        self.base_count = len(self.seq)
+    
+    def reverse_complement(self)

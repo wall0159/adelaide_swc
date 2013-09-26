@@ -1,0 +1,8 @@
+import sys
+
+args = sys.argv
+
+if int(args[1]) % 2 == 0:
+    print args[1] + ' is even.'
+else:
+    print args[1] + ' is odd.'

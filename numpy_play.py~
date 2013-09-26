@@ -1,0 +1,6 @@
+from numpy import *
+import matplotlib
+
+my_data = genfromtxt('csv/Pitching.csv', delimiter=',')
+# IPouts hist
+pylab.hist((my_data[:,12]), bins=50, normed=1)

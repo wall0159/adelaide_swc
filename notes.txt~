@@ -93,11 +93,3 @@ sphynx -- for bigger docs
 # Makefile
 N.B. makefile needs tabs not spaces!
 
-To run make over many files, use wildcards
-%.fasta.aln: %.fasta
-    muscle -in $< -out $@
-'%' is a wildcard, like *
-'$<' is the input file, and '$@' is the output file
-
-
-

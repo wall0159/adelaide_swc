@@ -1,8 +1,7 @@
 
 
 def removeN(dna):
-    # ensure dna is an uppercase string, then remove all the Ns
-    dna=str(''.join(dna)).upper().replace('N','')
+    dna=str(dna).upper().replace('N','')
     return dna
 
 def CG_ratio(dna):
@@ -11,7 +10,6 @@ def CG_ratio(dna):
     0.5
     '''
     dna=removeN(dna)
-    # TODO: remove double use of count()
     return (dna.count('C') + dna.count('G')) / float(len(dna)), len(dna)
 
 def dna_starts_with(dna, string):
@@ -27,9 +25,7 @@ def nucleotideContent(dnaString):
     {'A': 1, 'C': 1, 'G': 1}
     '''
     dnaDict = {}
-    # unique nucleotides
     uniques = set(dnaString)
-    # count each nucleotide, return dictionary of counts
     for nucleotide in uniques:
         dnaDict[nucleotide]=dnaString.count(nucleotide)    
     return dnaDict
@@ -55,7 +51,7 @@ def factorial(n):
         raise ValueError('n must be an integer')
     result = 1
     factor = 2
-    # algorithm example: n! = 2*3*4*..*n-1*n
+    # algorithm example: 4! = 1*2*3*4
     while factor <= n:
         result *= factor
         factor += 1
