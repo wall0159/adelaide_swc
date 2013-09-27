@@ -100,4 +100,57 @@ To run make over many files, use wildcards
 '$<' is the input file, and '$@' is the output file
 
 
+# NECTAR TRAINING COURSE
+nectar notes
+====== =====
 
+www.nectar.org.au/research-cloud
+accessed via AAF (Australian Access Federation -- requires institutional subscription)
+
+https://dashboard.rc.nectar.org.au
+
+in windows 
+- use puttygen to generate ssh key-pairs
+- use pageant to manage private keys
+
+
+on nectar, one can include a post-creation script to be run on each instance
+
+Jerico: how to access the cloud via software
+============================================
+
+OpenStack APIs
+--------------
+Swift
+
+Object storage
+#> sudo pip install python-swiftclient
+#> swift post MyFirstContainer
+#> swift list
+#> swift upload MyFirstContainer notes.txt
+#> swift download MyFirstContainer notes.txt
+swift is not like a filesystem, more like a DB. can't be mounted, but objects can be sent/received. Apparently can be used with hadoop
+
+Glance 
+
+Used to interface with nectar API, manage images
+download openstack Rc file (then run it)
+reset password (or get APi password)
+source ./pt-3451-openrc.sh
+# upload the custom image downloaded from ubuntu server images
+glance image-create --name="ubuntu_saucy" --is-public=false --container=bare --disk-format=qcow2 <~/saucy-server-cloudimg-amd64-disk1.img
+glance image-show af322da3-2264-40f9-8be2-cc3141c2aa66
+
+Nova
+
+Launches VMs on nectar
+sudo pip install python-novaclient
+nova list # give a list of VMs on the server
+nova delete 6ca756cf-0411-4bc7-a27e-28ebe6a507be #delete the VM we made earlier by the dashboard	
+nova availability-zone-list
+nova secgroup-list # list the security groups
+nova keypair-list
+nova flavor-list
+nova boot --image af322da3-2264-40f9-8be2-cc3141c2aa66 --key-name angusw_218 --security-groups ssh --availability-zone monash --flavor m1.medium --user-data post-boot-script.sh MySecondVM 
+
+Cinder
