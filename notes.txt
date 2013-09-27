@@ -154,3 +154,6 @@ nova flavor-list
 nova boot --image af322da3-2264-40f9-8be2-cc3141c2aa66 --key-name angusw_218 --security-groups ssh --availability-zone monash --flavor m1.medium --user-data post-boot-script.sh MySecondVM 
 
 Cinder
+
+# volume management
+sudo pip install python-cinderclient
